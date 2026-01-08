@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Special Surprise For You ✨</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
+
+body{
+background:linear-gradient(135deg,#f8e1f4,#e0c3f7,#c2e6ff);
+background-size:400% 400%;
+animation:gradientBackground 15s ease infinite;
+min-height:100vh;
+overflow-x:hidden;
+position:relative;
+}
+
+/* 🌸 BACKGROUND EMOJIS */
+.bg-emojis{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:1;
+pointer-events:none;
+overflow:hidden;
+}
+.bg-emojis span{
+position:absolute;
+font-size:2rem;
+opacity:0.25;
+animation:floatEmoji linear infinite;
+}
+@keyframes floatEmoji{
+0%{transform:translateY(100vh) rotate(0deg)}
+100%{transform:translateY(-10vh) rotate(360deg)}
+}
+
+.container{
+max-width:800px;
+margin:0 auto;
+padding:20px;
+position:relative;
+z-index:10;
+opacity:0;
+transform:translateY(20px);
+animation:fadeIn 3s forwards .5s;
+}
+
+header{text-align:center;margin-bottom:40px}
+h1{font-size:2.5rem;color:#6a4c93;text-shadow:0 0 10px rgba(255,255,255,.8)}
+
+.letter-container{
+background:rgba(255,255,255,.7);
+border-radius:20px;
+padding:30px;
+box-shadow:0 0 20px rgba(106,76,147,.3);
+margin-bottom:40px;
+}
+
+.letter{font-size:1.2rem;line-height:1.6;color:#333;min-height:200px}
+
+.surprise-button-container{text-align:center;margin:30px 0}
+.surprise-button{
+background:linear-gradient(45deg,#ff9a9e,#fad0c4,#a18cd1);
+color:#fff;
+font-size:1.5rem;
+font-weight:bold;
+padding:15px 40px;
+border:none;
+border-radius:50px;
+cursor:pointer;
+box-shadow:0 5px 20px rgba(161,140,209,.5);
+transition:.3s;
+margin:10px;
+}
+.surprise-button:hover{transform:translateY(-3px) scale(1.05)}
+
+.cursor-effect{
+position:absolute;
+width:15px;height:15px;
+border-radius:50%;
+background:rgba(255,182,193,.7);
+pointer-events:none;
+opacity:0;
+transition:.5s;
+z-index:1000;
+}
+
+/* 💖 POPUP */
+#lovePopup{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:#fff;
+padding:30px 50px;
+border-radius:30px;
+font-size:2rem;
+font-weight:bold;
+color:#ff4f9a;
+box-shadow:0 0 40px rgba(255,79,154,.6);
+z-index:9999;
+display:none;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px)}
+to{opacity:1;transform:translateY(0)}
+}
+@keyframes gradientBackground{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+<!-- 💕 BACKGROUND EMOJIS -->
+<div class="bg-emojis">
+<span style="left:10%;animation-duration:18s;">❤️</span>
+<span style="left:20%;animation-duration:22s;">🎈</span>
+<span style="left:30%;animation-duration:20s;">💖</span>
+<span style="left:40%;animation-duration:25s;">🌸</span>
+<span style="left:50%;animation-duration:19s;">😊</span>
+<span style="left:60%;animation-duration:23s;">🫶</span>
+<span style="left:70%;animation-duration:21s;">💞</span>
+<span style="left:80%;animation-duration:26s;">🎉</span>
+<span style="left:90%;animation-duration:24s;">🕊️</span>
+</div>
+
+<div class="container">
+<header>
+<h1>For My Dearest Potti Darling ❤️</h1>
+</header>
+
+<div class="letter-container">
+<div class="letter" id="typed-text"></div>
+</div>
+
+<div class="surprise-button-container">
+<button class="surprise-button" id="surprise-button">
+Click for a Surprise! 🎁
+</button>
+
+<button class="surprise-button" id="music-button">
+Play / Pause Music 🎶
+</button>
+</div>
+</div>
+
+<div id="lovePopup">I Love U Pandhi ❤️</div>
+
+<audio id="click-sound" preload="auto">
+<source src="yedemaina.mp3" type="audio/mpeg">
+</audio>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.5.1/confetti.browser.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+
+const letterContent="Hi my dear 🤍🌸,From the time I became mature enough to understand life 🌱, I know that I have caused you a lot of trouble and pain 😔💔🥀.Even then, you endured everything 🥹🤍 and stayed with me 🫂❤️—for that, I thank youfrom the bottom of my heart 🙏❤️‍🔥.The amount of love you showed me 🥹❤️‍🔥🫶 is something I don’t think I was ever able togive you back in the same way 😔💭.Please know this 🤍—I truly love you 🫶❤️, but because of my behavior 😢, you were never able to fully feel orunderstand it 💔🥺.I sincerely pray to God 🙏✨🤍 that you always remain happy 😊💫, healthy 💪🤍, andpeaceful 🕊️ throughout your life ♾️🫶,whether I am with you or not 🌍😔.These are the words I will always say to you 💭❤️—I love you 🫶❤️‍🔥, I miss you 🥹🤍, and take care 😘🙏.As long as I am alive ♾️🫂, you will keep hearing these words from me 🤍❤️.I know that we cannot leave each other and live separately 🤍🥺💔,but maybe this is how God planned it 🙏🌧️😔.Even so, my only wish 🥹❤️ is that we create many more beautiful memories together 💭🫶✨❤️.I want to be with you for a lifetime 🫂♾️❤️‍🔥—this one life with you is more than enough for me 🤍🥹💞.I don’t want anything else 🙏😔❤️.The moments I spent with you 🫶💭🥰 are not enough to fill my entire life ❤️‍🔥🥺,that’s why my heart still wishes for more memories with you 🥹🤍💔—and I pray with all my heart 🙏✨❤️‍🔥 that all those wishes come true someday ♾️🌈🤍.My final words to you are this 💌—no matter who is with you or who is not 🤍, always remember that I am here 🫂❤️‍🔥.Once again, happiest birthday, my dear pandi 🎂🥰🎈💖.I will love you forever in my life ❤️‍🔥♾️💞.Without you, I am nothing—that’s how important you are to me 🥹❤️‍🔥🫂.";
+
+new Typed('#typed-text',{
+strings:[letterContent],
+typeSpeed:30,
+showCursor:true,
+cursorChar:'|'
+});
+
+document.addEventListener('mousemove',e=>{
+const c=document.createElement('div');
+c.className='cursor-effect';
+c.style.left=e.pageX+'px';
+c.style.top=e.pageY+'px';
+document.body.appendChild(c);
+setTimeout(()=>c.style.opacity=1,10);
+setTimeout(()=>c.remove(),800);
+});
+
+const btn=document.getElementById('surprise-button');
+const popup=document.getElementById('lovePopup');
+const clickSound=document.getElementById('click-sound');
+const musicBtn=document.getElementById('music-button');
+
+btn.addEventListener('click',()=>{
+clickSound.play();
+popup.style.display='block';
+confetti({particleCount:120,spread:80});
+setTimeout(()=>{popup.style.display='none';},3000);
+});
+
+musicBtn.addEventListener('click',()=>{
+if(clickSound.paused){
+clickSound.play();
+}else{
+clickSound.pause();
+}
+});
+
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday My Love ❤️</title>
+
+<style>
+  /* 🎵 Music Button */
+#musicBtn{
+  position:fixed;
+  top:20px;
+  right:20px;
+  padding:12px 22px;
+  border-radius:30px;
+  background:linear-gradient(45deg,#ff1493,#ff69b4,#8a2be2);
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  z-index:9999;
+  box-shadow:0 0 20px hotpink;
+  animation:pulse 2s infinite;
+}
+
+/* 🌈 Animated Background Theme */
+body{
+  animation:bgShift 10s infinite alternate;
+}
+@keyframes bgShift{
+  0%{background:radial-gradient(circle,#ffb6c1,#ff69b4,#8a2be2)}
+  50%{background:radial-gradient(circle,#ffd1dc,#ff1493,#4b0082)}
+  100%{background:radial-gradient(circle,#ffc0cb,#ff69b4,#6a0dad)}
+}
+
+/* ✨ Bigger & More Emojis */
+.bg-emoji{
+  font-size:34px;
+  opacity:0.9;
+}
+
+/* 📸 Smaller Images */
+.slides img{
+  width:80%;
+  margin:auto;
+  border-radius:15px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Comic Sans MS',cursive}
+
+body{
+  min-height:100vh;
+  background:radial-gradient(circle at top,#ffb6c1,#ff69b4,#8a2be2);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  color:white;
+  text-align:center;
+}
+
+section{
+  position:absolute;
+  width:100%;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* 🌈 Emoji background before unlock */
+.bg-emoji{
+  position:fixed;
+  font-size:26px;
+  opacity:0;
+  animation:slowFloat 18s linear forwards;
+  pointer-events:none;
+}
+@keyframes slowFloat{
+  0%{transform:translateY(100vh);opacity:0}
+  20%{opacity:1}
+  80%{opacity:1}
+  100%{transform:translateY(-120vh);opacity:0}
+}
+
+/* Card */
+.card{
+  background:rgba(255,255,255,.25);
+  padding:30px;
+  border-radius:25px;
+  backdrop-filter:blur(12px);
+  box-shadow:0 0 40px rgba(255,20,147,.8);
+}
+
+/* Intro */
+#intro{
+  font-size:2.2rem;
+  text-shadow:0 0 30px hotpink;
+  opacity:0;
+}
+@keyframes introScene{
+  0%{opacity:0;transform:scale(1.2)}
+  20%{opacity:1}
+  80%{opacity:1}
+  100%{opacity:0;transform:scale(1)}
+}
+
+/* Lock */
+#lock{display:none}
+.lock-title{font-size:2rem;animation:pulse 2s infinite}
+@keyframes pulse{50%{transform:scale(1.05)}}
+
+input{
+  padding:12px;border-radius:25px;border:none;
+  width:220px;text-align:center;margin-top:15px
+}
+button{
+  margin-top:15px;
+  padding:12px 30px;
+  border:none;border-radius:30px;
+  background:linear-gradient(45deg,#ff1493,#ff69b4);
+  color:white;font-size:1rem;cursor:pointer;
+}
+
+/* 💖 Surprise */
+#chat{display:none}
+.chat-box{
+  background:white;
+  color:#ff1493;
+  width:340px;
+  padding:28px;
+  border-radius:25px;
+  line-height:1.6;
+  white-space:pre-line;
+  min-height:260px;
+}
+
+/* 💌 Letter */
+#letter{display:none}
+.letter{
+  background:white;
+  color:#ff1493;
+  max-width:330px;
+  padding:25px;
+  border-radius:20px;
+}
+
+/* Editable textarea */
+textarea{
+  width:100%;
+  min-height:150px;
+  border-radius:15px;
+  border:2px solid #ff69b4;
+  padding:12px;
+  resize:none;
+  font-family:'Comic Sans MS',cursive;
+  color:#ff1493;
+}
+
+/* Slider */
+.slider{overflow:hidden;border-radius:15px;margin:15px 0}
+.slides{display:flex;transition:.6s}
+.slides img{width:100%}
+
+/* Countdown */
+.countdown{margin-top:10px;font-weight:bold;color:#8a2be2}
+
+/* Cake */
+#cake{display:none;font-size:3rem;animation:bounce 1s infinite}
+@keyframes bounce{50%{transform:scale(1.1)}}
+
+/* Memory */
+#memory{display:none}
+
+/* Fireworks */
+.firework{
+  position:fixed;width:6px;height:6px;
+  background:gold;border-radius:50%;
+  animation:boom 1.2s ease-out
+}
+@keyframes boom{
+  to{transform:translate(var(--x),var(--y));opacity:0}
+}/* ✅ FIX letter overflow & slider size */
+
+/* Allow scrolling inside letter card */
+.letter{
+  max-height:90vh;
+  overflow-y:auto;
+}
+
+/* Reduce slider height so next content is visible */
+.slider{
+  max-height:200px;
+}
+
+/* Reduce image size inside letter slider */
+.slides img{
+  width:55%;
+  height:auto;
+  margin:10px auto;
+  display:block;
+  border-radius:15px;
+}
+</style>
+</head>
+
+<body>
+  <!-- 🎵 MUSIC BUTTON -->
+<div id="musicBtn" onclick="toggleMusic()">💖 A True Love Story Begins</div>
+
+<audio id="bgMusic" loop>
+  <source src="sirivennala.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 🎬 INTRO -->
+<section id="intro"><div id="introText"></div></section>
+
+<!-- 🔐 LOCK -->
+<section id="lock">
+  <div class="card">
+    <div class="lock-title" id="titleText"></div>
+    <input id="pass" type="password" placeholder="Our secret ❤️">
+    <button onclick="unlock()">Unlock 🎁</button>
+  </div>
+</section>
+
+<!-- 💖 SURPRISE MESSAGE -->
+<section id="chat">
+  <div class="chat-box" id="soulmateBox"></div>
+</section>
+
+<!-- 💌 LETTER -->
+<section id="letter">
+  <div class="letter">
+    <h2 id="letterTitle"></h2>
+
+    <textarea>
+My love ❤️,
+
+You Are My Safest Place,
+My Happiest Feeling,
+and My Forever 💖🥰
+
+Every moment with you feels magical ✨
+Every smile of yours makes my world brighter 😊
+
+Forever Yours❤️
+Your Soulmate 💍❤️
+    </textarea>
+
+    <div class="slider">
+      <div class="slides" id="slides">
+        <img src="s1.jpg">
+        <img src="s2.jpg">
+        <img src="s3.jpg">
+      </div>
+    </div>
+
+    <div class="countdown" id="countdown"></div>
+    <div id="cake">🧁</div>
+
+    <button onclick="openMemories()">See Memories 📸</button>
+  </div>
+</section>
+
+<!-- 💞 MEMORY -->
+<section id="memory">
+  <iframe src="memorylane.html" style="width:100%;height:100%;border:none;"></iframe>
+</section>
+
+<script>
+/* ✍️ EDIT HERE */
+const HER_NAME="Sandhya ❤️";
+const PASSWORD="sandhya2809";
+const BIRTHDAY="2026-01-09";
+
+const SOULMATE_MESSAGE=`
+💖 Your Dearest & Lifelong My Love ❤️ Soulmate 💖
+
+You are my heart, my happiness 💕
+my safe place and my forever 🥰✨
+
+Every moment with you feels magical ✨
+Every smile feels brighter 😊
+Every day feels complete 💫💖
+
+With lots & lots of love 💕
+From your forever soulmate 💍❤️
+`;
+/* 🎵 Music Control */
+const music=document.getElementById("bgMusic");
+let playing=false;
+
+function toggleMusic(){
+  if(!playing){
+    music.play();
+    playing=true;
+    musicBtn.innerText="💖 Play Song";
+  }else{
+    music.pause();
+    playing=false;
+    musicBtn.innerText="💖 Play Song";
+  }
+}
+
+/* 🛑 Stop music when Memory opens */
+function openMemories(){
+  music.pause();
+   musicBtn.style.display = "none";
+  letter.style.display="none";
+  memory.style.display="flex";
+}
+
+/* Titles */
+titleText.innerText=`🎂 Happy Birthday ${HER_NAME} ✨`;
+letterTitle.innerText=`💖 My Love ${HER_NAME} 💖`;
+
+/* Emoji background */
+const bgEmojis=["🎈","🎉","❤️","🎂","🥰","🫀","💕","😘","💞","💟","💝","💌","💗","💙","🩵","💛","💚","👩🏻‍❤️‍💋‍👨🏻","👩🏻‍❤️‍💋‍👨🏻","💖","✨","💍","💞","💕","😍","🌹","🦋","🌸"];
+let bgInterval;
+function startBgEmojis(){
+  bgInterval=setInterval(()=>{
+    const e=document.createElement("div");
+    e.className="bg-emoji";
+    e.innerText=bgEmojis[Math.floor(Math.random()*bgEmojis.length)];
+    e.style.left=Math.random()*90+"vw";
+    document.body.appendChild(e);
+    setTimeout(()=>e.remove(),18000);
+  },1800);
+}
+function stopBgEmojis(){clearInterval(bgInterval)}
+startBgEmojis();
+
+/* 🎬 Intro scenes — 12s EACH */
+const scenes=[
+  "🎬 A Love Story Begins… 💖",
+  `✨ Today Is ${HER_NAME}'s Special Day ✨`,
+  `🎂 Happy Birthday ${HER_NAME} ❤️`
+];
+
+let sceneIndex=0;
+function playIntro(){
+  introText.innerText=scenes[sceneIndex];
+  intro.style.animation="none";void intro.offsetWidth;
+  intro.style.animation="introScene 12s forwards";
+  sceneIndex++;
+  if(sceneIndex<scenes.length){
+    setTimeout(playIntro,12000);
+  }else{
+    setTimeout(()=>{intro.style.display="none";lock.style.display="flex"},12000);
+  }
+}
+playIntro();
+
+/* 🔓 Unlock → Surprise stays 12s */
+let fireInterval;
+function unlock(){
+  if(pass.value===PASSWORD){
+    stopBgEmojis();
+    lock.style.display="none";
+    chat.style.display="flex";
+    startTypewriter();
+    fireworks();
+    fireInterval=setInterval(fireworks,2500);
+
+    setTimeout(()=>{
+      clearInterval(fireInterval);
+      chat.style.display="none";
+      letter.style.display="flex";
+    },12000);
+  } else alert("Wrong password 💔");
+}
+
+/* ✍️ Typewriter */
+function startTypewriter(){
+  soulmateBox.innerText="";
+  let i=0;
+  const speed=40;
+  const typer=setInterval(()=>{
+    soulmateBox.innerText+=SOULMATE_MESSAGE.charAt(i++);
+    if(i>=SOULMATE_MESSAGE.length) clearInterval(typer);
+  },speed);
+}
+
+/* Slider */
+let idx=0;
+setInterval(()=>{
+  idx=(idx+1)%3;
+  slides.style.transform=`translateX(-${idx*100}%)`;
+},3000);
+
+/* Countdown */
+function updateCountdown(){
+  const diff=new Date(BIRTHDAY)-new Date();
+  if(diff<=0){
+    countdown.innerText=`🎉 Happy Birthday ${HER_NAME}! 🎉`;
+    cake.style.display="block";
+    return;
+  }
+  const d=Math.floor(diff/86400000);
+  const h=Math.floor(diff/3600000)%24;
+  const m=Math.floor(diff/60000)%60;
+  const s=Math.floor(diff/1000)%60;
+  countdown.innerText=`🎂 Birthday in ${d}d ${h}h ${m}m ${s}s`;
+}
+setInterval(updateCountdown,1000);
+updateCountdown();
+
+
+/* Fireworks */
+function fireworks(){
+  for(let i=0;i<70;i++){
+    const f=document.createElement("div");
+    f.className="firework";
+    f.style.left=Math.random()*100+"vw";
+    f.style.top=Math.random()*60+"vh";
+    f.style.setProperty("--x",(Math.random()*600-300)+"px");
+    f.style.setProperty("--y",(Math.random()*600-300)+"px");
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(),1200);
+  }
+}
+</script>
+
+</body>
+</html> 
